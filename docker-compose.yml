@@ -20,11 +20,23 @@ services:
       - "discovery.type=single-node"
       - "cluster.name=enterprise-search-docker-cluster"
       - "bootstrap.memory_lock=true"
-      - "xpack.security.enabled=true"
-      - "xpack.security.authc.api_key.enabled=true"
+      - xpack.security.enabled=false
+      - xpack.graph.enabled=false
+      - xpack.ml.enabled=false
+      - xpack.monitoring.enabled=true
+      - xpack.watcher.enabled=false      
+      - "xpack.security.authc.api_key.enabled=false"
       - "ELASTIC_PASSWORD=${ELASTIC_PASSWORD}"
       - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
 
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.9.3
+    ports:
+      - "5601:5601"
+    environment:
+      - xpack.security.enabled=false
+      - "ELASTICSEARCH_HOSTS=http://elasticsearch:9200"
+            
   enterprisesearch:
     image: docker.elastic.co/enterprise-search/enterprise-search:7.9.3
     environment:
