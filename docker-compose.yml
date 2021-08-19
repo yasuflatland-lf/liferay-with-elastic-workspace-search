@@ -37,21 +37,6 @@ services:
       - xpack.security.enabled=false
       - "ELASTICSEARCH_HOSTS=http://elasticsearch:9200"
             
-  enterprisesearch:
-    image: docker.elastic.co/enterprise-search/enterprise-search:7.9.3
-    environment:
-      - "elasticsearch.host=http://elasticsearch:9200"
-      - "ent_search.auth.default.source=standard"
-      - "elasticsearch.username=elastic"
-      - "elasticsearch.password=${ELASTIC_PASSWORD}"
-      - "secret_management.encryption_keys=[${ENCRYPTION_KEYS}]"
-      - "allow_es_settings_modification=true"
-      - "JAVA_OPTS=-Xms2g -Xmx2g"
-      - "ENT_SEARCH_DEFAULT_PASSWORD=${ENT_SEARCH_DEFAULT_PASSWORD}"
-    ports:
-      - 3002:3002
-    depends_on:
-      - elasticsearch
     
   mysql:
     image: mysql:5.7
