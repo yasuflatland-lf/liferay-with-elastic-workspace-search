@@ -2,12 +2,10 @@
 clean: ## Cleanup database
 	rm -fR ./es/data ./db/mysql_data
 
-.PHONY: destory
-destory: ## Destroy all environment
-	cd ./db; \
-	rm -fR mysql_data; \
-	cd ../; \
-	docker-compose down --rmi all --volumes --remove-orphans;
+.PHONY: destroy
+destroy: ## Destroy all environment
+	docker-compose down --rmi all --volumes --remove-orphans; \
+	rm -fR ./es/data ./db/mysql_data;
 
 .PHONY: run
 run: ## Shorthand of running docker images
