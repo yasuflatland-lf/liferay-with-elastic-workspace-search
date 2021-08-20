@@ -14,13 +14,13 @@
 #
 # Use a descriptive name for your cluster:
 #
-cluster.name: LiferayElasticsearchCluster
+cluster.name: enterprise-search-docker-cluster
 #
 # ------------------------------------ Node ------------------------------------
 #
 # Use a descriptive name for the node:
 #
-node.name: LiferayElasticsearchCluster
+node.name: es-node
 #
 # Add custom attributes to the node:
 #
@@ -34,7 +34,7 @@ node.name: LiferayElasticsearchCluster
 #
 # Path to log files:
 #
-path.logs: /var/log/elasticsearch
+# path.logs: /var/log/elasticsearch
 #
 # ----------------------------------- Memory -----------------------------------
 #
@@ -114,5 +114,4 @@ discovery.zen.minimum_master_nodes: 1
 # index.indexing.slowlog.threshold.index.trace: 500ms
 # index.indexing.slowlog.level: info
 # index.indexing.slowlog.source: 1000
-
-xpack.security.enabled: false
+# xpack.security.enabled: true

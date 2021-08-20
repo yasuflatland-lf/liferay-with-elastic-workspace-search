@@ -12,3 +12,8 @@ destory:
 # Shorthand of running docker images
 run:
 	docker-compose --env-file ./.env up --build;
+
+# clean and rerun
+rerun:
+	rm -fR ./es/data ./db/mysql_data
+	docker-compose --env-file ./.env up --build;
