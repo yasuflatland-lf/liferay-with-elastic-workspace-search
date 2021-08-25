@@ -7,7 +7,7 @@ server.name: kibana
 server.host: "0"
 elasticsearch.hosts: [ "http://elasticsearch:9200" ]
 elasticsearch.username : "elastic"
-elasticsearch.password : "password1111"
+elasticsearch.password : "password1"
 
 #use same encryptionkey with .env
 xpack.security.encryptionKey: "8e541a61aeb42910d70e8be2e43681b0d88725468e2b02ef7f9963e7722d75cf"

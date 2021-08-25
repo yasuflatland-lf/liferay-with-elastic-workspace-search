@@ -34,7 +34,7 @@ Before running images, please configure Docker as follows.
     ```
 # Access Servers
 ## Elasticsearch Workspace Search
-Access to `http://localhost:3002/` and login with `enterprise_search` and `password2222`
+Access to `http://localhost:3002/` and login with `enterprise_search` and `password2`
 
 ## Liferay DXP
 Access to `http://localhost:8080` and login with `test@liferay.com` and `test`
@@ -42,9 +42,9 @@ Access to `http://localhost:8080` and login with `test@liferay.com` and `test`
 
 # Trouble shootings
 ## Confirm services
-1. Access to `http://localhost:9200/` and the basic authentication should be required. Login with `elastic` and `password1111`.
-1. Access to kibana service `http://localhost:5601/`, Login with `elastic` and `password1111`
-1. Access to `http://localhost:3002/` and login with `enterprise_search` and `password2222`
+1. Access to `http://localhost:9200/` and the basic authentication should be required. Login with `elastic` and `password1`.
+1. Access to kibana service `http://localhost:5601/`, Login with `elastic` and `password1`
+1. Access to `http://localhost:3002/` and login with `enterprise_search` and `password2`
 1. Connect to mysql and confirm table `lrportal` is created.
 1. Access to `http://localhost:8080` and login with `test@liferay.com` and `test`
 
