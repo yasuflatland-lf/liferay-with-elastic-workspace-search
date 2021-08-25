@@ -57,3 +57,7 @@ comment out `RUN***` parts in `es/Dockerfile`
 
 ## DB related error
 Connect to mysql server and recreate table `lrportal`
+
+## Enterprise searh : Elasticsearch cluster must be licensed.
+## Enterprise searh : Elasticsearch API key service must be enabled.
+The depended service is not fully started. Just start this service later.

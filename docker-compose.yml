@@ -55,6 +55,7 @@ services:
       - 3002:3002
     depends_on:
       - elasticsearch
+      - kibana
     
   mysql:
     container_name: lwe_mysql

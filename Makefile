@@ -1,6 +1,7 @@
 # Cleanup database
 clean:
 	rm -fR ./es/data ./db/mysql_data
+	mkdir ./es/data
 
 # Destroy all environment
 destory:

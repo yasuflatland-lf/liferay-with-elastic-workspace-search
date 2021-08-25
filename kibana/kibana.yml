@@ -10,5 +10,5 @@ elasticsearch.username : "elastic"
 elasticsearch.password : "password1111"
 
 #use same encryptionkey with .env
-xpack.security.encryptionKey: "33178fa1ffc6bc62c6b572c26a245fc7b92765a6396e96247ce36ca6d226b715"
+xpack.security.encryptionKey: "8e541a61aeb42910d70e8be2e43681b0d88725468e2b02ef7f9963e7722d75cf"
 monitoring.ui.container.elasticsearch.enabled: true
