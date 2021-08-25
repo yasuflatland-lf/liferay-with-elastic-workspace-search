@@ -2,8 +2,7 @@ version: '3.9'
 
 services:
   elasticsearch:
-    container_name: elasticsearch
-    # image: docker.elastic.co/elasticsearch/elasticsearch:7.9.3
+    container_name: lwe_elasticsearch
     build: es
     ports:
       - "9200:9200"
@@ -28,6 +27,7 @@ services:
       - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
 
   kibana:
+    container_name: lwe_kibana
     image: docker.elastic.co/kibana/kibana:7.9.3
     depends_on:
       - elasticsearch
@@ -40,7 +40,7 @@ services:
       - "ELASTICSEARCH_HOSTS=http://elasticsearch:9200"
 
   enterprisesearch:
-    container_name: enterprisesearch
+    container_name: lwe_enterprisesearch
     image: docker.elastic.co/enterprise-search/enterprise-search:7.9.3
     environment:
       - "elasticsearch.host=http://elasticsearch:9200"
@@ -57,6 +57,7 @@ services:
       - elasticsearch
     
   mysql:
+    container_name: lwe_mysql
     image: mysql:5.7
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     ports:
@@ -75,6 +76,7 @@ services:
       MYSQL_PASSWORD: password
 
   liferay:
+    container_name: lwe_liferay
     image: liferay/dxp:7.3.10-dxp-2
     environment:
       - LCP_PROJECT_ENVIRONMENT=local
