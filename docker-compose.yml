@@ -12,14 +12,14 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - ./es/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - ./es/data/:/usr/share/elasticsearch/data/
+      - ./es/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       #- ./es/config/logging.yml:/usr/share/elasticsearch/config/logging.yml
       - ./es/logs/:/var/log/elasticsearch/
     environment:
       - "node.name=es-node"
       - "discovery.type=single-node"
-      - "cluster.name=enterprise-search-docker-cluster"
+      - "cluster.name=LiferayElasticsearchCluster"
       - "bootstrap.memory_lock=true"
       - "xpack.security.enabled=true"
       - "xpack.security.authc.api_key.enabled=true"
