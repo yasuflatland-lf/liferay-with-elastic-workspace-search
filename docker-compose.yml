@@ -17,7 +17,6 @@ services:
       #- ./es/config/logging.yml:/usr/share/elasticsearch/config/logging.yml
       - ./es/logs/:/var/log/elasticsearch/
     environment:
-      - "node.name=es-node"
       - "discovery.type=single-node"
       - "cluster.name=LiferayElasticsearchCluster"
       - "bootstrap.memory_lock=true"
