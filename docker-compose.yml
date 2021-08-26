@@ -2,40 +2,44 @@ version: '3.9'
 
 services:
   elasticsearch:
+    container_name: lwe_elasticsearch
     build: es
     ports:
       - "9200:9200"
-      - "9300:9300"    
+      - "9300:9300"
     ulimits:
       memlock:
         soft: -1
-        hard: -1      
+        hard: -1
     volumes:
       - ./es/data/:/usr/share/elasticsearch/data/
       - ./es/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - ./es/config/logging.yml:/usr/share/elasticsearch/config/logging.yml
-      - ./es/logs/:/var/log/elasticsearch/        
+      #- ./es/config/logging.yml:/usr/share/elasticsearch/config/logging.yml
+      - ./es/logs/:/var/log/elasticsearch/
     environment:
       - "discovery.type=single-node"
+      - "cluster.name=LiferayElasticsearchCluster"
       - "bootstrap.memory_lock=true"
-      - xpack.security.enabled=false
-      - xpack.graph.enabled=false
-      - xpack.ml.enabled=false
-      - xpack.monitoring.enabled=true
-      - xpack.watcher.enabled=false      
-      - "xpack.security.authc.api_key.enabled=false"
+      - "xpack.security.enabled=true"
+      - "xpack.security.authc.api_key.enabled=true"
       - "ELASTIC_PASSWORD=${ELASTIC_PASSWORD}"
       - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
 
   kibana:
+    container_name: lwe_kibana
     image: docker.elastic.co/kibana/kibana:7.9.3
+    depends_on:
+      - elasticsearch
     ports:
       - "5601:5601"
+    volumes:
+      - ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
     environment:
       - xpack.security.enabled=false
       - "ELASTICSEARCH_HOSTS=http://elasticsearch:9200"
-            
+
   enterprisesearch:
+    container_name: lwe_enterprisesearch
     image: docker.elastic.co/enterprise-search/enterprise-search:7.9.3
     environment:
       - "elasticsearch.host=http://elasticsearch:9200"
@@ -50,8 +54,10 @@ services:
       - 3002:3002
     depends_on:
       - elasticsearch
+      - kibana
     
   mysql:
+    container_name: lwe_mysql
     image: mysql:5.7
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     ports:
@@ -68,7 +74,9 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_USER: test
       MYSQL_PASSWORD: password
+
   liferay:
+    container_name: lwe_liferay
     image: liferay/dxp:7.3.10-dxp-2
     environment:
       - LCP_PROJECT_ENVIRONMENT=local

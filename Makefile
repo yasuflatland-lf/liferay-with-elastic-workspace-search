@@ -1,6 +1,7 @@
 .PHONY: clean
 clean: ## Cleanup database
 	rm -fR ./es/data ./db/mysql_data
+	mkdir ./es/data
 
 .PHONY: destroy
 destroy: ## Destroy all environment
